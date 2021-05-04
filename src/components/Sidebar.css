@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+}
+
+.sidebar {
+}
+
+.sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar__header__dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
