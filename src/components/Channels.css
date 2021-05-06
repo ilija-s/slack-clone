@@ -1,0 +1,20 @@
+.channels {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+.channels:hover {
+    background-color: #340e36;
+    opacity: .9;
+}
+
+.channels__hash {
+    padding: 10px;
+}
+
+.channels > h3 {
+    font-weight: 400;
+}
