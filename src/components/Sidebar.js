@@ -11,6 +11,8 @@ import Channels from './Channels';
 function Sidebar() {
     const [channels, setChannels] = useState([]);
 
+    /* useEffect react hook for loading channels and
+       channel data from the firestore database */
     useEffect(() => {
         db.collection("channels").onSnapshot((snapshot) => { 
             setChannels(
@@ -29,7 +31,7 @@ function Sidebar() {
                     <h2>test</h2>
                     <KeyboardArrowDownIcon/>
                 </div>
-                <button><CreateIcon/></button>
+                <button><CreateIcon className="sidebar__header__createIcon"/></button>
             </div>
             <div className="sidebar__browse">
                 <MoreVertIcon/>

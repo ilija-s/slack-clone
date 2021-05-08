@@ -38,7 +38,6 @@
 .sidebar__header > button {
     background: #4d134e;
     border: none;
-    color: white;
     cursor: pointer;
     width: 64px;
 }
@@ -85,4 +84,11 @@
 
 hr {
     border: 1px solid #4d134e;
+}
+
+.sidebar__header__createIcon {
+    color: #49274b;
+    font-size: 32px !important;
+    background-color: white;
+    border-radius: 50%;
 }
