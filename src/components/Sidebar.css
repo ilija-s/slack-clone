@@ -6,33 +6,18 @@
     width: 222px;
 }
 
+/* Sidebar header */
+
 .sidebar__header {
     color: white;
     display: flex;
     align-items: stretch;
     height: 64px;
-    border-bottom: 1px solid rgb(82, 38, 83);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
     background: #4d134e;
     font-size: 16px;
     font-weight: 400;
     cursor: pointer;
-}
-
-.sidebar__header:hover {
-    background: #350d36;
-}
-
-.sidebar__header:hover button{
-    background: #350d36;
-}
-
-.sidebar__header__dropdown > h2 {
-    font-size: 12px;
-}
-
-.sidebar__header__dropdown > .MuiSvgIcon-root {
-    font-size: 18px;
-    font-weight: 600;
 }
 
 .sidebar__header > button {
@@ -40,6 +25,16 @@
     border: none;
     cursor: pointer;
     width: 64px;
+    outline: none;
+}
+
+.sidebar__header__dropdown > h2 {
+    font-size: 12px;
+}
+
+.sidebar__header__dropdown > .MuiSvgIcon-root {
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .sidebar__header__dropdown {
@@ -50,11 +45,14 @@
     padding: 0 20px 0 16px;
 }
 
+/* Browse slack */
+
 .sidebar__browse {
     box-shadow: 0 1px 0 0 rgb(255 255 255 / 10%);
     display: flex;
     font-size: 14px;
     padding-left: 12px;
+    padding-top: 10px;
     align-items: center;
     color: white;
     cursor: pointer;
@@ -72,14 +70,55 @@
     font-weight: 300;
     opacity: .8;
     padding-left: 4px;
+    padding-right: 6px;
 }
 
-.sidebar__browse:hover h3 {
-    opacity: 1;
+/* Show more channels */
+
+.sidebar__showmore {
+    box-shadow: 0 1px 0 0 rgb(255 255 255 / 10%);
+    color: white;
+    cursor: pointer;
+    background: #4d134e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-left: 12px;
 }
 
-.sidebar__browse:hover .MuiSvgIcon-root {
-    opacity: 1;
+.sidebar__showmore__channels {
+    display: flex;
+    align-items: center;
+    height: 26px;
+}
+
+.sidebar__showmore__channels > h3 {
+    font-weight: 200;
+    opacity: .8;
+}
+
+.sidebar__showmore__channels > .MuiSvgIcon-root {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: .8;
+    padding-left: 4px;
+    padding-right: 6px;
+}
+
+.sidebar__showmore > button > .MuiSvgIcon-root {
+    font-size: 22px;
+    margin-right: 8px;
+    opacity: .9;
+    cursor: pointer;
+}
+
+.sidebar__showmore button {
+    color: white;
+    background-color: #4d134e;
+    border: none;
+    outline: none;
 }
 
 hr {
@@ -91,4 +130,28 @@ hr {
     font-size: 32px !important;
     background-color: white;
     border-radius: 50%;
+}
+
+/* Hovers */
+
+.sidebar__header:hover {
+    background: #350d36;
+}
+
+.sidebar__header:hover button{
+    background: #350d36;
+}
+
+.sidebar__browse:hover h3 {
+    opacity: 1;
+}
+
+.sidebar__browse:hover .MuiSvgIcon-root {
+    opacity: 1;
+}
+
+.sidebar__showmore > button:hover > .MuiSvgIcon-root {
+    opacity: 1;
+    background-color: #350d367e;
+    border-radius: 6px;
 }

@@ -17,7 +17,6 @@
     flex: 1;
     min-width: 128px;
     justify-content: flex-end;
-    cursor: pointer;
     opacity: .8;
 }
 
@@ -69,4 +68,12 @@
 
 .header .MuiSvgIcon-root {
     font-size: 22px;
+}
+
+.header__left .MuiSvgIcon-root {
+    cursor: pointer;
+}
+
+.header__avatar {
+    cursor: pointer;
 }
