@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './Sidebar.css';
-import db from '../firebase';
+import db from '../../firebase';
+import Channels from '../Channels/Channels';
 
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import CreateIcon from '@material-ui/icons/Create';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import AddIcon from '@material-ui/icons/Add';
-import Channels from './Channels';
 
 function Sidebar() {
     const [channels, setChannels] = useState([]);

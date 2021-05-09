@@ -4,6 +4,7 @@
 
 .sidebar {
     width: 222px;
+    background: #4d134e;
 }
 
 /* Sidebar header */
@@ -30,6 +31,7 @@
 
 .sidebar__header__dropdown > h2 {
     font-size: 12px;
+    user-select: none;
 }
 
 .sidebar__header__dropdown > .MuiSvgIcon-root {
@@ -63,6 +65,8 @@
 .sidebar__browse > h3 {
     font-weight: 200;
     opacity: .8;
+    user-select: none;
+
 }
 
 .sidebar__browse > .MuiSvgIcon-root {
@@ -97,6 +101,7 @@
 .sidebar__showmore__channels > h3 {
     font-weight: 200;
     opacity: .8;
+    user-select: none;
 }
 
 .sidebar__showmore__channels > .MuiSvgIcon-root {

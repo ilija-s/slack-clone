@@ -1,5 +1,9 @@
+body {
+  overflow: hidden;
+  position: relative;
+}
+
 .app__body {
   display: flex;
-  flex-direction: column;
   height: 100vh;
 }

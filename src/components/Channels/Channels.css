@@ -20,4 +20,5 @@
 
 .channels > h3 {
     font-weight: 200;
+    user-select: none;
 }
