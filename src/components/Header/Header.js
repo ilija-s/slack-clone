@@ -4,6 +4,26 @@ import "./Header.css"
 import {Avatar} from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import Badge from '@material-ui/core/Badge';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledBadge = withStyles((theme) => ({
+    badge: {
+      backgroundColor: '#44b700',
+      color: '#44b700',
+      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+      '&::after': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%',
+        border: '1px solid currentColor',
+        content: '""',
+      },
+    },
+  }))(Badge);
 
 function Header() {
     return (
@@ -18,10 +38,19 @@ function Header() {
                 <HelpOutlineIcon />
             </div>
             <div className="header__right">
-                {/* displays picture, status, on-click more options */}
+                <StyledBadge
+                    overlap="circle"
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'right',
+                    }}
+                    variant="dot"
+                >
                 <Avatar
+                    variant="rounded"
                     className="header__avatar"
                     alt={"Ilija"}/>
+                </StyledBadge>
            </div>
         </div>
     )

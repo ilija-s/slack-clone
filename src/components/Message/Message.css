@@ -1,0 +1,26 @@
+.message {
+    display: flex;
+    align-items: center;
+    padding: 16px 0 12px 16px;
+}
+
+.message > img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    padding-right: 4px;
+}
+
+.message__main > h4 {
+    font-size: 16px;
+}
+
+.message__main > p {
+    padding-top: 4px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.message__main > h4 > span {
+    font-weight: 200;
+}

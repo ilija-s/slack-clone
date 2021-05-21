@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
 import db from '../../firebase';
 import Channels from '../Channels/Channels';
@@ -13,8 +12,6 @@ import AddIcon from '@material-ui/icons/Add';
 function Sidebar() {
     const [channels, setChannels] = useState([]);
 
-    /* useEffect react hook for loading channels and
-       channel data from the firestore database */
     useEffect(() => {
         db.collection("channels").onSnapshot((snapshot) => { 
             setChannels(
@@ -25,6 +22,16 @@ function Sidebar() {
             )
         });
     }, []);
+
+    const addChannel = () => {
+        const channelName = prompt('Create a channel');
+
+        if (channelName) {
+            db.collection("channels").add({
+                name: channelName
+            });
+        }
+    }
 
     return (
         <div className="sidebar">
@@ -44,7 +51,7 @@ function Sidebar() {
                     <ArrowDropDownIcon /> 
                     <h3>Channels</h3>
                 </div>
-                <button><AddIcon/></button>
+                <button onClick={addChannel}><AddIcon/></button>
             </div>
             {channels.map((channel) => {
                 return <Channels title={channel.name} id={channel.id}/>

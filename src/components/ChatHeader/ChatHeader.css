@@ -17,3 +17,23 @@
     display: flex;
     align-items: center;
 }
+
+.chatHeader__left > h4 {
+    text-transform: lowercase;
+    font-size: 14px;
+}
+
+.chatHeader__right > h4 {
+    font-size: 14px;
+}
+
+.chatHeader__left > .MuiSvgIcon-root {
+    padding-left: 6px;
+    font-size: 22px;
+    opacity: .6;
+}
+
+.chatHeader__right > .MuiSvgIcon-root {
+    font-size: 22px;
+    opacity: .6;
+}
