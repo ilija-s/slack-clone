@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.css';
 
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Main from "./components/Main/Main";
+import Login from "./components/Login/Login";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+import { useStateValue } from "./StateProvider";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className="app">
       <Router>
         {!user ? (            
-          <h2>U need to login</h2>
+          <Login/>
         ) : (
           <>
           <Header />

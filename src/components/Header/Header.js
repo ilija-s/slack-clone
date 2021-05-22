@@ -6,6 +6,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
+import { useStateValue } from '../../StateProvider';
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
@@ -26,6 +27,8 @@ const StyledBadge = withStyles((theme) => ({
   }))(Badge);
 
 function Header() {
+    const [{ user }] = useStateValue();
+
     return (
         <div className="header">
             <div className="header__left">
@@ -49,7 +52,8 @@ function Header() {
                 <Avatar
                     variant="rounded"
                     className="header__avatar"
-                    alt={"Ilija"}/>
+                    src={user?.photoURL}
+                    alt={user?.displayName}/>
                 </StyledBadge>
            </div>
         </div>

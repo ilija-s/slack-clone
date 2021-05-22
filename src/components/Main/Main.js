@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import ChatHeader from '../ChatHeader/ChatHeader';
 import Chat from '../Chat/Chat';
+import ChatMessageInput from '../ChatMessageInput/ChatMessageInput';
 import './Main.css';
 import { useParams } from 'react-router-dom';
 import db from '../../firebase'
@@ -22,6 +23,7 @@ function Main() {
         <div className="main">
             <ChatHeader title={channelData?.name}/>
             <Chat room={roomId}/>
+            <ChatMessageInput channelName={channelData?.name} channelId={roomId}/>
         </div>
     )
 }
