@@ -13,7 +13,7 @@ import {
 import { useStateValue } from "./StateProvider";
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   return (
     <div className="app">
@@ -26,11 +26,14 @@ function App() {
           <div className="app__body">
             <Sidebar />
             <Switch>
-              <Route path="/room/:roomId">
-                <Main/>
+              <Route path="/conversation/:roomId">
+                <Main channelType={"channels"} />
+              </Route>
+              <Route path="/private/:roomId">
+                <Main channelType={"private"}/>
               </Route>
               <Route path="/">
-                <h1>Test</h1>
+                <h1>Pick a channel to start a conversation or create your own</h1>
               </Route>
             </Switch>
           </div>

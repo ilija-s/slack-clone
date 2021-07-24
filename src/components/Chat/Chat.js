@@ -4,21 +4,21 @@ import './Chat.css';
 import db from '../../firebase';
 import Message from '../Message/Message';
 
-function Chat({ room }) {
+function Chat({ room, channelType }) {
     const [channelMessages, setChannelMessages] = useState(null);
 
+    // XXX: make channelType compatible with being passed inside collection method
     useEffect(() => {
-        db.collection("channels")
+        db.collection(channelType)
         .doc(room)
         .collection("chatRoom")
         .orderBy("timestamp", "asc")
         .onSnapshot(snapshot => setChannelMessages(
             snapshot.docs.map(doc => doc.data())
         ))
-    }, [room]);
+    }, [room, channelType]);
 
-    console.log(channelMessages);
-
+    // XXX: use some kind of if-else if there are no messages
     return (
         <div className="chat">
             {channelMessages?.map(({message, timestamp, user, userImg}) => {

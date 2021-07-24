@@ -4,7 +4,7 @@ import db from "../../firebase";
 import { useStateValue } from '../../StateProvider';
 import firebase from 'firebase';
 
-function ChatMessageInput({ channelName, channelId }) {
+function ChatMessageInput({ channelName, channelId, channelType }) {
     const [input, setInput] = useState("");
     const [{ user }] = useStateValue();
 
@@ -12,7 +12,7 @@ function ChatMessageInput({ channelName, channelId }) {
         e.preventDefault();
 
         if (channelId) {
-            db.collection("channels")
+            db.collection(channelType)
             .doc(channelId)
             .collection("chatRoom")
             .add({

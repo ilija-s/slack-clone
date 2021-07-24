@@ -8,7 +8,7 @@ import { actionTypes } from '../../reducer';
 function Login() {
     const [state, dispatch] = useStateValue();
 
-    const signIn = (e) => {
+    const signInWithGoogle = (e) => {
         auth.signInWithPopup(provider)
         .then(result => {
             dispatch({
@@ -25,11 +25,11 @@ function Login() {
         <div className="login">
             <div className="login__card">
                 <img
-                src="../../img/slack_logo.png"
+                src="https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd-1024-80.jpg.webp"
                 alt="slack-logo"
                 />
                 <h1>Sign in to slack-clone</h1>
-                <Button onClick={signIn}>Sign in with Google</Button>
+                <Button onClick={signInWithGoogle}><img src="../../img/btn_google_light_normal_ios.svg" alt="Google"></img>Sign in with Google</Button>
             </div>
         </div>
     )

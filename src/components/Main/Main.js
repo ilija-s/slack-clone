@@ -7,23 +7,23 @@ import './Main.css';
 import { useParams } from 'react-router-dom';
 import db from '../../firebase'
 
-function Main() {
+function Main({ channelType }) {
     const { roomId } = useParams();
     const [channelData, setChannelData] = useState(null);
 
     useEffect(() => {
         if (roomId) {
-            db.collection('channels')
+            db.collection(channelType)
             .doc(roomId)
             .onSnapshot(snapshot => setChannelData(snapshot.data()))
         }
-    }, [roomId])
+    }, [roomId, channelType])
 
     return (
         <div className="main">
             <ChatHeader title={channelData?.name}/>
-            <Chat room={roomId}/>
-            <ChatMessageInput channelName={channelData?.name} channelId={roomId}/>
+            <Chat room={roomId} channelType={channelType}/>
+            <ChatMessageInput channelName={channelData?.name} channelId={roomId} channelType={channelType}/>
         </div>
     )
 }
