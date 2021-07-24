@@ -15,11 +15,18 @@
 
 .channels__hash {
     padding-left: 12px;
-    padding-right: 5px;
+    padding-right: 4px;
 }
 
 .channels > h3 {
+    padding-left: 6px;
     font-weight: 200;
     user-select: none;
     opacity: .8;
+}
+
+.channels > img {
+    height: 20px;
+    width: 20px;
+    border-radius: 3px;
 }

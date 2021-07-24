@@ -17,3 +17,8 @@
     margin-top: 50px;
     text-transform: inherit !important;
 }
+
+.login__card > img {
+    height: 128px;
+    padding-bottom: 20px;
+}

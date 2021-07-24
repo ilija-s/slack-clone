@@ -20,11 +20,12 @@
 
 .chatHeader__left > h4 {
     text-transform: lowercase;
-    font-size: 14px;
+    font-size: 15px;
+    padding-right: 4px;
 }
 
 .chatHeader__right > h4 {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .chatHeader__left > .MuiSvgIcon-root {

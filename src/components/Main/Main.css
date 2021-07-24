@@ -2,4 +2,5 @@
     width: 100%;
     overflow-y: scroll;
     padding-bottom: 150px;
+    scroll-behavior: smooth;
 }
