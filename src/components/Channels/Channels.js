@@ -4,7 +4,7 @@ import './Channels.css';
 import { useHistory } from 'react-router-dom';
 
 
-function Channels({image, title, id}) {
+function Channels({ image, title, id }) {
     const history = useHistory();
 
     const openChannel = () => {
@@ -15,17 +15,13 @@ function Channels({image, title, id}) {
         history.push(`/private/${id}`);
     }
 
-    const openMenu = (e) => {
-        ;
-    };
-
     return image ? (
-        <div className="channels" onClick={openPrivateChat} contextMenu={openMenu}>
+        <div className="channels" onClick={openPrivateChat}>
             <img src={image} alt="x"/>
-            <h3> { title }</h3>
+            <h3> {title}</h3>
         </div>
     ) : (
-        <div className="channels" onClick={openChannel} contextMenu={openMenu}>
+        <div className="channels" onClick={openChannel}>
             <h3><span className="channels__hash">#</span> { title }</h3>
         </div>
     );

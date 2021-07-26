@@ -32,9 +32,16 @@
     padding-left: 6px;
     font-size: 22px;
     opacity: .6;
+    cursor: pointer;
 }
 
 .chatHeader__right > .MuiSvgIcon-root {
     font-size: 22px;
     opacity: .6;
+    cursor: pointer;
+}
+
+.chatHeader__right__small {
+    width: 10px;
+    height: 10px;
 }
