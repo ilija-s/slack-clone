@@ -1,12 +1,14 @@
-import React from 'react'
-import "./Header.css"
+import React, { useState } from 'react';
+import "./Header.css";
 
-import {Avatar} from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import { useStateValue } from '../../StateProvider';
+import { auth } from '../../firebase';
+import { actionTypes } from '../../reducer';
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
@@ -28,6 +30,26 @@ const StyledBadge = withStyles((theme) => ({
 
 function Header() {
     const [{ user }] = useStateValue();
+    const [open, setOpen] = useState(false);
+    // eslint-disable-next-line no-unused-vars
+    const [_state, dispatch] = useStateValue();
+
+    const toggleDropdown = () => {
+        setOpen(state => !state);
+    }
+
+    const logout = () => {
+        auth.signOut()
+        .then(() => {
+            dispatch({
+                type: actionTypes.SET_USER,
+                user: null
+            })
+        })
+        .catch(error => {
+            alert(error.message);
+        });
+    }
 
     return (
         <div className="header">
@@ -50,12 +72,24 @@ function Header() {
                     variant="dot"
                 >
                 <Avatar
+                    onClick={toggleDropdown}
                     variant="rounded"
                     className="header__avatar"
                     src={user?.photoURL}
-                    alt={user?.displayName}/>
+                    alt={user?.displayName}
+                />
                 </StyledBadge>
            </div>
+           {open ? (
+                <div className="header__dropdown">
+                    <div>
+                        <Avatar variant="rounded" alt={user?.displayName} src={user?.photoURL}/>
+                    </div>
+                    <div onClick={logout}>
+                        <p>Log Out</p>
+                    </div>
+                </div>
+            ) : null}
         </div>
     )
 }
