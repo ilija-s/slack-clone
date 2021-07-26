@@ -1,16 +1,45 @@
-import React from 'react'
+import React from 'react';
 import './Login.css';
+
 import { Button } from "@material-ui/core";
-import { auth, provider } from "../../firebase"
+import db, { auth, provider } from "../../firebase"
 import { useStateValue } from '../../StateProvider';
 import { actionTypes } from '../../reducer';
 
 function Login() {
+    // eslint-disable-next-line no-unused-vars
     const [state, dispatch] = useStateValue();
 
-    const signInWithGoogle = (e) => {
+    const userExists = (id) => {
+        let exists = false;
+        db.collection('users')
+        .where("id", "==", id)
+        .get()
+        .then(data => {
+            if (!data.empty)
+                exists = true;
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        return exists;
+    }
+
+    const signInWithGoogle = () => {
         auth.signInWithPopup(provider)
         .then(result => {
+            const userAlreadyExists = userExists(result.user.uid);
+
+            if (userAlreadyExists) {
+                db.collection('users').add({
+                    id: result.user.uid,
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    image: result.user.photoURL,
+                    isActive: true
+                });
+            }
+
             dispatch({
                 type: actionTypes.SET_USER,
                 user: result.user
@@ -29,7 +58,7 @@ function Login() {
                 alt="slack-logo"
                 />
                 <h1>Sign in to slack-clone</h1>
-                <Button onClick={signInWithGoogle}><img src="../../img/btn_google_light_normal_ios.svg" alt="Google"></img>Sign in with Google</Button>
+                <Button onClick={signInWithGoogle}><img id="google-img" src="https://avatars.githubusercontent.com/u/7328930?v=4" alt="Google"></img>Sign in with Google</Button>
             </div>
         </div>
     )
