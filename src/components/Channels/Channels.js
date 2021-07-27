@@ -2,10 +2,45 @@ import React from 'react'
 
 import './Channels.css';
 import { useHistory } from 'react-router-dom';
+import { Avatar } from '@material-ui/core';
+import Badge from '@material-ui/core/Badge';
+import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+    small: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+    },
+}));
 
-function Channels({ image, title, id }) {
+const StyledBadge = withStyles((theme) => ({
+    badge: {
+        backgroundColor: '#44b700',
+        color: '#44b700',
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        '&::after': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '50%',
+            height: '50%',
+            borderRadius: '50%',
+            border: '1px solid currentColor',
+            content: '""',
+        },
+    },
+}))(Badge);
+
+function Channels({ image, title, id, isActive }) {
     const history = useHistory();
+    const classes = useStyles();
 
     const openChannel = () => {
         history.push(`/conversation/${id}`);
@@ -17,7 +52,22 @@ function Channels({ image, title, id }) {
 
     return image ? (
         <div className="channels" onClick={openPrivateChat}>
-            <img src={image} alt="x"/>
+            <StyledBadge
+                invisible={!isActive}
+                overlap="circle"
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                variant="dot"
+            >
+            <Avatar 
+                className={classes.small} 
+                variant="rounded" 
+                src={image} 
+                alt=""
+            />
+            </StyledBadge>
             <h3> {title}</h3>
         </div>
     ) : (

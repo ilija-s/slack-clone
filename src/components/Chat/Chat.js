@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import './Chat.css';
 import db from '../../firebase';
@@ -7,7 +7,6 @@ import Message from '../Message/Message';
 function Chat({ room, channelType }) {
     const [channelMessages, setChannelMessages] = useState(null);
 
-    // XXX: make channelType compatible with being passed inside collection method
     useEffect(() => {
         db.collection(channelType)
         .doc(room)
@@ -18,7 +17,16 @@ function Chat({ room, channelType }) {
         ))
     }, [room, channelType]);
 
-    // XXX: use some kind of if-else if there are no messages
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [channelMessages]);
+
     return (
         <div className="chat">
             {channelMessages?.map(({message, timestamp, user, userImg}) => {
@@ -29,6 +37,7 @@ function Chat({ room, channelType }) {
                 userImg = {userImg}
                 />
             })}
+            <div ref={messagesEndRef} />
         </div>
     )
 }
