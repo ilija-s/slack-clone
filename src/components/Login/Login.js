@@ -11,39 +11,42 @@ function Login() {
     const [state, dispatch] = useStateValue();
 
     const userExists = (id) => {
-        let exists = false;
-        db.collection('users')
+        return db.collection('users')
         .where("id", "==", id)
         .get()
         .then(data => {
             if (!data.empty)
-                exists = true;
+                return true;
+            return false;
         })
         .catch((error) => {
             console.log(error);
         })
-        return exists;
     }
 
     const signInWithGoogle = () => {
         auth.signInWithPopup(provider)
         .then(result => {
-            const userAlreadyExists = userExists(result.user.uid);
+            userExists(result.user.uid)
+            .then(exists => {
+                if (!exists) {
+                    db.collection('users').add({
+                        id: result.user.uid,
+                        name: result.user.displayName,
+                        email: result.user.email,
+                        image: result.user.photoURL,
+                        isActive: true
+                    });
+                }
 
-            if (userAlreadyExists) {
-                db.collection('users').add({
-                    id: result.user.uid,
-                    name: result.user.displayName,
-                    email: result.user.email,
-                    image: result.user.photoURL,
-                    isActive: true
-                });
-            }
-
-            dispatch({
-                type: actionTypes.SET_USER,
-                user: result.user
+                dispatch({
+                    type: actionTypes.SET_USER,
+                    user: result.user
+                })
             })
+            .catch(error => {
+                alert(error.message);
+            });
         })
         .catch(error => {
             alert(error.message);
