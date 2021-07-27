@@ -13,19 +13,10 @@
     align-items: center;
 }
 
-.chatHeader__right {
-    display: flex;
-    align-items: center;
-}
-
 .chatHeader__left > h4 {
     text-transform: lowercase;
-    font-size: 15px;
+    font-size: 17px;
     padding-right: 4px;
-}
-
-.chatHeader__right > h4 {
-    font-size: 15px;
 }
 
 .chatHeader__left > .MuiSvgIcon-root {
@@ -35,10 +26,25 @@
     cursor: pointer;
 }
 
+.chatHeader__right {
+    display: flex;
+    align-items: center;
+    border: 1px solid lightslategray;
+    border-radius: 6px;
+}
+
+.chatHeader__right > h4 {
+    font-size: 15px;
+}
+
 .chatHeader__right > .MuiSvgIcon-root {
     font-size: 22px;
     opacity: .6;
     cursor: pointer;
+}
+
+.chatHeader__right > p {
+    padding: 2px 8px;
 }
 
 .chatHeader__right__small {
