@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+}
+
+.dropdown {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    background-color: whitesmoke;
+    color: black;
+    box-shadow: 0 0 1px rgba(29, 28, 29, 0.13), 0 4px 12px 0 rgba(0, 0, 0, .12);
+    border-radius: 6px;
+    border: 1px solid rgba(29, 28, 29, 0.13);
+    overflow-y: auto;
+    top: 44px;
+    right: 16px;
+    max-width: 350px;
+    min-width: 200px;
+    width: 250px;
+    z-index: 1000;
+}
+
+.dropdown__info {
+    display: flex;
+    align-items: center;
+}

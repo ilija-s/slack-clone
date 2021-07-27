@@ -1,0 +1,30 @@
+* {
+	margin: 0;
+}
+
+.sbdropdown {
+    position: absolute;
+    top: 100;
+    left: 15px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: whitesmoke;
+    border-radius: 6px;
+    border: 1px solid rgba(29, 28, 29, 0.13);
+    box-shadow: 0 0 1px rgba(29, 28, 29, 0.13), 0 4px 12px 0 rgba(0, 0, 0, .12);
+    width: 300px;
+    min-width: 200px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sbdropdown__header {
+    display: flex;
+    align-items: center;
+}
+
+.sbdropdown__info {
+	padding: 0 8px;
+}
