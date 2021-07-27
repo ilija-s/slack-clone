@@ -30,7 +30,7 @@ function App() {
                 <Main channelType={"channels"} />
               </Route>
               <Route path="/private/:roomId">
-                <Main channelType={"private"}/>
+                <Main channelType={"private"} />
               </Route>
               <Route path="/">
                 <h1>Pick a channel to start a conversation or create your own</h1>

@@ -19,9 +19,15 @@ function Main({ channelType }) {
         }
     }, [roomId, channelType])
 
+    console.log(channelData);
+
     return (
         <div className="main">
-            <ChatHeader title={channelData?.name}/>
+            {channelType === "private" ? (
+                <ChatHeader type="private" data={channelData}/>
+            ) : (
+                <ChatHeader title={channelData?.name} members={channelData?.users}/>
+            )}
             <Chat room={roomId} channelType={channelType}/>
             <ChatMessageInput channelName={channelData?.name} channelId={roomId} channelType={channelType}/>
         </div>
