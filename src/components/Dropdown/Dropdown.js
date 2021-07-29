@@ -29,11 +29,10 @@ function Dropdown({ image, altName }) {
 			<div className="dropdown__info">
 				<Avatar variant="rounded" alt={altName} src={image}/>
 				<p>{altName}</p>
-				<p>Active</p>
 			</div>
 			<hr></hr>
 			<div className="dropdown__logout" onClick={logout}>
-				<p>Log Out</p>
+				<p>Sign out</p>
 			</div>
 		</div>	
 	)

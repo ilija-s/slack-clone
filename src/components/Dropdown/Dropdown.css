@@ -5,7 +5,8 @@
 .dropdown {
     position: absolute;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     padding: 20px 24px;
     background-color: whitesmoke;
     color: black;
@@ -13,6 +14,7 @@
     border-radius: 6px;
     border: 1px solid rgba(29, 28, 29, 0.13);
     overflow-y: auto;
+    overflow-x: hidden;
     top: 44px;
     right: 16px;
     max-width: 350px;
@@ -24,4 +26,27 @@
 .dropdown__info {
     display: flex;
     align-items: center;
+}
+
+.dropdown__info > p {
+    padding: 0 5px 0px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.dropdown__logout {
+    margin-top: 8px;
+    padding: 5px 0 5px 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown__logout:hover {
+    background-color: #1264a3;
+    color: whitesmoke;
+}
+
+.dropdown__logout > p {
+    font-weight: 300;
+    font-size: 17px;
 }

@@ -9,12 +9,15 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import CreateIcon from '@material-ui/icons/Create';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import AddIcon from '@material-ui/icons/Add';
 
 function Sidebar() {
     const [channels, setChannels] = useState([]);
     const [privateMessages, setPrivateMessages] = useState([]);
     const [open, setOpen] = useState(false);
+    const [openChannels, setOpenChannels] = useState(true);
+    const [openPrivate, setOpenPrivate] = useState(true);
 
     const [{ user }] = useStateValue();
 
@@ -80,6 +83,14 @@ function Sidebar() {
         setOpen(state => !state);
     }
 
+    function displayChannels() {
+        setOpenChannels(state => !state);
+    }
+
+    function displayPrivate() {
+        setOpenPrivate(state => !state);
+    }
+
     function getUserByEmail(email) {
         return db.collection('users')
         .where('email', '==', email)
@@ -143,26 +154,30 @@ function Sidebar() {
             </div>
 
             <div className="sidebar__showmore">
-                <div className="sidebar__showmore__channels">
-                    <ArrowDropDownIcon /> 
+                <div onClick={displayChannels} className="sidebar__showmore__channels">
+                    {openChannels ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
                     <h3>Channels</h3>
                 </div>
                 <button onClick={addChannel}><AddIcon/></button>
             </div>
-            {channels.map((channel) => {
-                return <Channels title={channel.name} id={channel.id}/>
-            })}
+            {openChannels ? (
+                channels.map((channel) => {
+                    return <Channels title={channel.name} id={channel.id}/>
+                })
+            ) : null}
 
             <div className="sidebar__showmore">
-                <div className="sidebar__showmore__channels">
-                    <ArrowDropDownIcon /> 
+                <div onClick={displayPrivate} className="sidebar__showmore__channels">
+                    {openPrivate ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
                     <h3>Direct messages</h3>
                 </div>
                 <button onClick={addDirectMessage}><AddIcon/></button>
             </div>
-            {privateMessages.map((privateMessage) => {
-                return <Channels image={privateMessage.partner.image} isActive={privateMessage.partner.isActive} title={privateMessage.partner.name} id={privateMessage.id}/>
-            })}
+            {openPrivate ? (
+                privateMessages.map((privateMessage) => {
+                    return <Channels image={privateMessage.partner.image} isActive={privateMessage.partner.isActive} title={privateMessage.partner.name} id={privateMessage.id}/>
+                })
+            ) : null}
         </div>
     )
 }
