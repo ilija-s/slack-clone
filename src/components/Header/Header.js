@@ -9,21 +9,14 @@ import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import { useStateValue } from '../../StateProvider';
 
-const StyledBadge = withStyles((theme) => ({
+const StyledBadge = withStyles(() => ({
     badge: {
-        backgroundColor: '#44b700',
-        color: '#44b700',
-        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-        '&::after': {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            borderRadius: '50%',
-            border: '1px solid currentColor',
-            content: '""',
-        },
+        background: '#4d134e',
+        backgroundColor: '#007a5a',
+        width: '14px',
+        height: '14px',
+        border: `2.5px solid #4d134e`,
+        borderRadius: '50%',
     },
 }))(Badge);
 

@@ -30,6 +30,7 @@ function ChatMessageInput({ channelName, channelId, channelType }) {
         <div className="chatMessageInput">
             <form>
                 <input 
+                autoFocus
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder={`Send a message to #${channelName?.toLowerCase()}`}

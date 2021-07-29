@@ -1,6 +1,5 @@
 import React from 'react'
 import './ChatHeader.css';
-import { useStateValue } from '../../StateProvider';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { AvatarGroup } from '@material-ui/lab';
@@ -20,11 +19,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ChatHeader({ title, type, data, members }) {
-    const [{ user }] = useStateValue();
+function ChatHeader({ user, title, type, data, members }) {
     const classes = useStyles();
 
-    const partner = (user.email === data?.from.email ? (data?.to) : (data?.from));
+    const partner = (user?.email === data?.from?.email ? (data?.to) : (data?.from));
 
     return (
         <div className="chatHeader">

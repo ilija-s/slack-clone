@@ -27,10 +27,10 @@ function App() {
             <Sidebar />
             <Switch>
               <Route path="/conversation/:roomId">
-                <Main channelType={"channels"} />
+                <Main user={user} channelType={"channels"} />
               </Route>
               <Route path="/private/:roomId">
-                <Main channelType={"private"} />
+                <Main user={user} channelType={"private"} />
               </Route>
               <Route path="/">
                 <h1>Pick a channel to start a conversation or create your own</h1>
