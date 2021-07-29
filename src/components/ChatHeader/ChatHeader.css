@@ -1,5 +1,9 @@
 .chatHeader {
-    height: 64px;
+    height: 52px;
+    position: fixed;
+    top: 43px;
+    width: 85%;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,7 +20,7 @@
 .chatHeader__left > h4 {
     text-transform: lowercase;
     font-size: 17px;
-    padding-right: 4px;
+    padding-left: 6px;
 }
 
 .chatHeader__left > .MuiSvgIcon-root {

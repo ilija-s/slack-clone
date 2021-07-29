@@ -1,5 +1,11 @@
 .chatMessageInput {
+    background-color: white;
+    position: absolute;
+    bottom: 22px;
+    right: 40px;
+    left: 240px;
     border-radius: 20px;
+    background-color: white;
 }
 
 .chatMessageInput > form {
@@ -9,12 +15,10 @@
 }
 
 .chatMessageInput > form > input {
-    position: fixed;
-    bottom: 30px;
-    width: 80%;
+    width: 100%;
     border: 1px solid gray;
     border-radius: 6px;
-    padding: 20px;
+    padding: 20px 14px;
 }
 
 .chatMessageInput > form > button {

@@ -14,6 +14,7 @@
 
 .message__main > h4 {
     font-size: 16px;
+    width: fit-content;
 }
 
 .message__main > p {
