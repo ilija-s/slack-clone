@@ -20,19 +20,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const StyledBadge = withStyles((theme) => ({
+const StyledBadge = withStyles(() => ({
     badge: {
-        backgroundColor: '#44b700',
-        color: '#44b700',
-        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        backgroundColor: '#007a5a',
+        border: `2px solid #4d134e`,
+        width: '11px',
+        height: '11px',
+        borderRadius: '50%',
         '&::after': {
             position: 'absolute',
             top: 0,
             left: 0,
-            width: '50%',
-            height: '50%',
-            borderRadius: '50%',
-            border: '1px solid currentColor',
             content: '""',
         },
     },
@@ -54,7 +52,6 @@ function Channels({ image, title, id, isActive }) {
         <div className="channels" onClick={openPrivateChat}>
             <StyledBadge
                 invisible={!isActive}
-                overlap="circle"
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'right',

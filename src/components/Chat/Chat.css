@@ -1,0 +1,9 @@
+.chat {
+	position: absolute;
+	top: 100px;
+	left: 224px;
+	right: 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 78vh;
+}
