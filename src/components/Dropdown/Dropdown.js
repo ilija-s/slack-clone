@@ -3,7 +3,7 @@ import React from 'react';
 import './Dropdown.css';
 
 import { Avatar } from '@material-ui/core';
-import { auth } from '../../firebase';
+import db, { auth } from '../../firebase';
 import { actionTypes } from '../../reducer';
 import { useStateValue } from '../../StateProvider';
 
@@ -14,6 +14,10 @@ function Dropdown({ image, altName }) {
     const logout = () => {
         auth.signOut()
         .then(() => {
+			db.collection('users').doc(user.uid).update({
+				isActive: false
+			});
+
             dispatch({
                 type: actionTypes.SET_USER,
                 user: null

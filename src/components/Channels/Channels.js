@@ -1,11 +1,11 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
 import './Channels.css';
+import db from '../../firebase';
+
 import { useHistory } from 'react-router-dom';
 import { Avatar } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
-import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,9 +36,18 @@ const StyledBadge = withStyles(() => ({
     },
 }))(Badge);
 
-function Channels({ image, title, id, isActive }) {
+function Channels({ image, title, id, partnerId}) {
     const history = useHistory();
     const classes = useStyles();
+    const [active, setActive] = useState(false);
+
+    if (partnerId) {
+        useEffect(() => {
+            db.collection('users').doc(partnerId).onSnapshot((snapshot) => {
+                setActive(snapshot.data().isActive);
+            });
+        }, []);
+    }
 
     const openChannel = () => {
         history.push(`/conversation/${id}`);
@@ -48,10 +57,10 @@ function Channels({ image, title, id, isActive }) {
         history.push(`/private/${id}`);
     }
 
-    return image ? (
+    return partnerId ? (
         <div className="channels" onClick={openPrivateChat}>
             <StyledBadge
-                invisible={!isActive}
+                invisible={!active}
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'right',

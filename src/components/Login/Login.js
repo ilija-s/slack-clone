@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 
+import { useHistory } from 'react-router-dom';
 import { Button } from "@material-ui/core";
 import db, { auth, provider } from "../../firebase"
 import { useStateValue } from '../../StateProvider';
@@ -10,14 +11,14 @@ function Login() {
     // eslint-disable-next-line no-unused-vars
     const [state, dispatch] = useStateValue();
 
+    useHistory().push('/');
+
     const userExists = (id) => {
         return db.collection('users')
-        .where("id", "==", id)
+        .doc(id)
         .get()
         .then(data => {
-            if (!data.empty)
-                return true;
-            return false;
+            return data.exists;
         })
         .catch((error) => {
             console.log(error);
@@ -30,7 +31,7 @@ function Login() {
             userExists(result.user.uid)
             .then(exists => {
                 if (!exists) {
-                    db.collection('users').add({
+                    db.collection('users').doc(result.user.uid).set({
                         id: result.user.uid,
                         name: result.user.displayName,
                         email: result.user.email,
@@ -38,6 +39,8 @@ function Login() {
                         isActive: true
                     });
                 }
+
+                db.collection('users').doc(result.user.uid).update({isActive: true});
 
                 dispatch({
                     type: actionTypes.SET_USER,
