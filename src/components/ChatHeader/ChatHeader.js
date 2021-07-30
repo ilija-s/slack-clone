@@ -28,7 +28,12 @@ function ChatHeader({ user, title, type, data, members }) {
         <div className="chatHeader">
             {type === "private" ? (
                 <div className="chatHeader__left">
-                    <Avatar className={classes.small} variant="rounded" src={partner?.image} />
+                    <Avatar 
+                        className={classes.small} 
+                        variant="rounded" 
+                        src={partner?.image}
+                        alt={partner?.name}
+                    />
                     <h4>{partner?.name}</h4>
                     <StarOutlineIcon/>
                 </div>

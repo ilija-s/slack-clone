@@ -96,8 +96,10 @@ function Sidebar() {
         .where('email', '==', email)
         .get()
         .then(data => {
-            if (data.docs[0].exists) {
-                return data.docs[0].data();
+            if (data) {
+                return data?.docs[0].data();
+            } else {
+                console.log("User with that email doesn't exist!");
             }
         })
         .catch((error) => {
@@ -114,14 +116,15 @@ function Sidebar() {
         getUserByEmail(userEmail).then(usr => {
             userReceiver = usr;
 
-            newUser['email'] = user.email;
-            newUser['id'] = user.uid;
-            newUser['image'] = user.photoURL;
-            newUser['name'] = user.displayName;
-            newUser['isActive'] = true;
+            newUser = {
+                email: user.email,
+                id: user.uid,
+                image: user.photoURL,
+                name: user.displayName
+            }
 
             const alreadyExists = privateMessages.filter((room) => {
-                return room.uid === userReceiver.id;
+                return room.uid === userReceiver?.id;
             }).length > 0;
 
             if (userEmail && !alreadyExists) {
@@ -148,6 +151,7 @@ function Sidebar() {
             {open ? (
                 <SidebarDropdown altName="Test"/>
             ) : null}
+
             <div className="sidebar__browse">
                 <MoreVertIcon/>
                 <h3>More</h3>
@@ -175,7 +179,7 @@ function Sidebar() {
             </div>
             {openPrivate ? (
                 privateMessages.map((privateMessage) => {
-                    return <Channels image={privateMessage.partner.image} isActive={privateMessage.partner.isActive} title={privateMessage.partner.name} id={privateMessage.id}/>
+                    return <Channels partnerId={privateMessage.partner.id} image={privateMessage.partner.image} title={privateMessage.partner.name} id={privateMessage.id}/>
                 })
             ) : null}
         </div>
