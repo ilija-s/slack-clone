@@ -1,8 +1,6 @@
 .chatHeader {
     height: 52px;
-    position: fixed;
-    top: 43px;
-    width: 85%;
+    width: 100%;
     background-color: white;
     display: flex;
     align-items: center;
@@ -18,7 +16,6 @@
 }
 
 .chatHeader__left > h4 {
-    text-transform: lowercase;
     font-size: 17px;
     padding-left: 6px;
 }
