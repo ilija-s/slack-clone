@@ -19,7 +19,7 @@ function Chat({ room, channelType }) {
     }, [room, channelType]);
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end"})
     }
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function Chat({ room, channelType }) {
     }, [channelMessages]);
 
     return (
-        <div className="chat" ref={messagesEndRef}>
+        <div className="chat">
             {channelMessages?.map(({message, timestamp, user, userImg}) => {
                 return <Message
                 message = {message}
