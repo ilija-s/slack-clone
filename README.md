@@ -29,6 +29,11 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
 
 ![demo-pic1](https://user-images.githubusercontent.com/46342896/127707633-23f4b64f-084d-431e-8101-405c361f5993.png)
 
+Login component
+
+![demo-pic2](https://user-images.githubusercontent.com/46342896/127711358-33e0a35b-b83d-422f-a3de-e8b9876054c2.png)
+
+
 ## Usage
 
 Before running the app, create new firebase project, cd into src/firebase.js file and add firebaseConfig const.
@@ -40,3 +45,5 @@ $ git clone https://github.com/ilija-s/slack-clone
 $ cd slack-clone
 $ yarn && yarn start
 ```
+
+Open in browser on `http://localhost:3000`
