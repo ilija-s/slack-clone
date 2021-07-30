@@ -64,7 +64,7 @@ function Login() {
                 alt="slack-logo"
                 />
                 <h1>Sign in to slack-clone</h1>
-                <Button onClick={signInWithGoogle}><img id="google-img" src="https://avatars.githubusercontent.com/u/7328930?v=4" alt="Google"></img>Sign in with Google</Button>
+                <Button onClick={signInWithGoogle}><img id="google-img" src="https://avatars.githubusercontent.com/u/7328930?v=4" alt="Google"></img><p>Sign in with Google</p></Button>
             </div>
         </div>
     )

@@ -1,3 +1,7 @@
+p {
+    padding-left: 10px;
+}
+
 .login {
     height: 100vh;
     background-color: #f8f8f8;
@@ -16,6 +20,9 @@
 .login__card > button {
     margin-top: 50px;
     text-transform: inherit !important;
+    box-shadow: 0 0 1px rgba(29, 28, 29, 0.13), 0 4px 12px 0 rgba(0, 0, 0, .12);
+    border-radius: 6px;
+    border: 1px solid rgba(29, 28, 29, 0.13);
 }
 
 .login__card > img {
@@ -24,6 +31,6 @@
 }
 
 #google-img {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
