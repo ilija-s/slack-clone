@@ -47,7 +47,7 @@ function ChatHeader({ user, title, type, data, members }) {
                 <div className="chatHeader__right">
                     <AvatarGroup max={4}>
                         {members?.map(member => {
-                            return <Avatar className={classes.small} variant="rounded" alt={member?.name} src={member?.image} />;
+                            return <Avatar className={classes.small} alt={member?.name} src={member?.image} />;
                         })}
                     </AvatarGroup>
                     <p>{members?.length}</p>

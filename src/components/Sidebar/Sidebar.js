@@ -44,7 +44,6 @@ function Sidebar() {
                 snapshot.docs.map((doc) => ({
                     id: doc.id,
                     partner: (user.email === doc.data().from.email ? (doc.data().to) : (doc.data().from)),
-                    uid: doc.data().id,
                     receiverName: doc.data().to.name,
                 }))
             )

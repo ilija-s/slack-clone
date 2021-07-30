@@ -61,6 +61,7 @@ function Channels({ image, title, id, partnerId}) {
         <div className="channels" onClick={openPrivateChat}>
             <StyledBadge
                 invisible={!active}
+                overlap="circular"
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'right',

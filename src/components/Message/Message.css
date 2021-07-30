@@ -14,11 +14,13 @@
 
 .message__main > h4 {
     font-size: 16px;
+    padding-left: 4px;
     width: fit-content;
 }
 
 .message__main > p {
     padding-top: 4px;
+    padding-left: 6px;
     font-size: 16px;
     font-weight: 400;
 }
